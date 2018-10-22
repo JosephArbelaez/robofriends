@@ -3,6 +3,8 @@ import CardList from './CardList'
 import { robots } from './robots';
 import SearchBox from './SearchBox';
 import './App.css';
+import Scroll from './Scroll';
+
 /*
     This = The App
     States are "Smart Components" and holds the state of the app.
@@ -43,6 +45,7 @@ class App extends React.Component {
             This if statement is just in case 
             there are lots of information and it is slow to respond
         */
+
         if (this.state.robots.length === 0) {
             return <h1>Loading</h1>
         } else{
@@ -50,7 +53,9 @@ class App extends React.Component {
                 <div className='tc'>
                     <h1 className='f1'>RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
-                    <CardList robots={filteredRobots}/>
+                    <Scroll>
+                        <CardList robots={filteredRobots}/>
+                    </Scroll>
                 </div>
             )
         }
